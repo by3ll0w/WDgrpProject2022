@@ -18,6 +18,9 @@ class CreateFoodTable extends Migration
             $table->string('size');
             $table->string('ToppingID');
             $table->string('NoodleTypeID');
+            $table->string('UserID');
+            $table->string('OrderID');
+            $table->string('Status');
             $table->double('unitPrice',8,2);
             $table->integer('quantity')->unsigned();  
             $table->double('totalPrice',8,2);

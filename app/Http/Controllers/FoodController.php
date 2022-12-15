@@ -27,11 +27,12 @@ class FoodController extends Controller
             'totalPrice' => $price * ($r->foodQuantity),
             'ToppingID' => $r->ToppingID,
             'NoodleTypeID' => $r->NoodleTypeID,
+            
         
 
         ]);
 
-            (new CartController)->updatePrice();
+           
 
         Session::flash('success', "Product created successfully!");
 
