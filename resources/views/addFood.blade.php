@@ -15,11 +15,11 @@
                 <br>
                 <label for="foodSize">Size</label><br>
                 <input type="radio" id="S" name="foodSize" value="S" checked="checked" required>
-                <label for="S">S (RM 4.50)</label><br>
+                <label for="S">S (RM 5.00)</label><br>
                 <input type="radio" id="M" name="foodSize" value="M">
-                <label for="M">M (RM 6.00)</label><br>
+                <label for="M">M (RM 7.50)</label><br>
                 <input type="radio" id="L" name="foodSize" value="L">
-                <label for="L">L (RM 8.00)</label><br>
+                <label for="L">L (RM 9.00)</label><br>
 
             </div>
 

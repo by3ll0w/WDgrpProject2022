@@ -71,6 +71,11 @@ Route::get('/viewCart',[App\Http\Controllers\CartController::class, 'viewCart'])
 Route::get('/checkout',[App\Http\Controllers\CartController::class, 'checkOut'])->name('checkout');
 
 
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

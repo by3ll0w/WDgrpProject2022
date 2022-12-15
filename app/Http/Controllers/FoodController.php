@@ -27,7 +27,7 @@ class FoodController extends Controller
             'totalPrice' => $price * ($r->foodQuantity),
             'ToppingID' => $r->ToppingID,
             'NoodleTypeID' => $r->NoodleTypeID,
-            'CartID' =>$this->obtainCart()->value('id')
+        
 
         ]);
 
@@ -44,33 +44,19 @@ class FoodController extends Controller
    
 
 
-    public static function obtainCart()
-    {
-        $key = auth()->user()->id;
-        $cart = Cart::where('UserID', $key)->where('checkout', 'NO')->first();
 
-        if (!$cart) {
-            $cart = Cart::create([
-                'UserID' => $key,
-                'amount' => 0,
-                'checkout' => "NO"
-            ]);
-        }
-
-        return $cart;
-    }
 
     public static function getPrice($size)
     {
         switch ($size) {
             case "S":
-                return 4.50;
+                return 5.00;
                 break;
             case "M":
-                return 6.00;
+                return 7.50;
                 break;
             case "L":
-                return 8.00;
+                return 9.00;
             default:
                 return 0;
                 break;
