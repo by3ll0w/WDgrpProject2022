@@ -25,6 +25,9 @@ class FoodController extends Controller
             'quantity' => $r->foodQuantity,
             'unitPrice' => $price,
             'totalPrice' => $price * ($r->foodQuantity),
+            'OrderID'=>"-1",
+            'Status'=>"0",
+            'UserID'=>auth()->id(),
             'ToppingID' => $r->ToppingID,
             'NoodleTypeID' => $r->NoodleTypeID,
             
@@ -40,9 +43,13 @@ class FoodController extends Controller
     }
 
 
+    public function edit(){
 
+    }
 
-   
+   public function delete(){
+    
+   }
 
 
 
