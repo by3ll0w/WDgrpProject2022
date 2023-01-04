@@ -11,7 +11,7 @@
             @CSRF
 
             <div class="form-group">
-                <label for="addFood">Add New Product</label>
+                <label for="addFood">Add to Order</label>
                 <br>
                 <label for="foodSize">Size</label><br>
                 <input type="radio" id="S" name="foodSize" value="S" checked="checked" required>
@@ -49,7 +49,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Add New</button>
+            <button type="submit" class="btn btn-primary">Order</button>
         </form>
 
 

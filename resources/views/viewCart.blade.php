@@ -21,7 +21,6 @@
                 @foreach($food as $food)
                   
             
-                @if($food->UserID==Auth::id())
                 <tr>
 
                     <td>{{$food->ToppingName}}</td>
@@ -33,7 +32,7 @@
 
                     <td></td>
                 </tr>
-                @endif
+
 
 
                 @endforeach
@@ -42,12 +41,14 @@
         </table>
         <div>
             <h1>Total: RM
-                @foreach($cart as $cart)
-                {{$cart->amount}}
-                @endforeach
+             
+                {{$total}}
+             
             </h1>
 
-            <a class="btn btn-danger" href='{{ route("checkout") }}'>
+          
+        
+       <a class="btn btn-danger" href='{{ route("checkout") }}'>
         {{ __('Checkout') }}
     </a>
        

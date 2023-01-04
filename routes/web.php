@@ -62,13 +62,14 @@ Route::post('/newItem',[App\Http\Controllers\FoodController::class, 'add'])->nam
 
 
 //Cart
-Route::get('/testCart',[App\Http\Controllers\CartController::class, 'getCart'])->name('testCart');
+//Route::get('/testCart',[App\Http\Controllers\CartController::class, 'getCart'])->name('testCart');
 
-Route::get('/viewCart',[App\Http\Controllers\CartController::class, 'viewCart'])->name('viewCart');
+Route::get('/viewCart',[App\Http\Controllers\FoodController::class, 'viewItemsInCart'])->name('viewCart');
+
 
 
 //
-Route::get('/checkout',[App\Http\Controllers\CartController::class, 'checkOut'])->name('checkout');
+Route::get('/checkout',[App\Http\Controllers\FoodController::class, 'checkout'])->name('checkout');
 
 
 

@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 use App\Models\Food;
-use App\Models\Cart;
 use App\Models\NoodleType;
 use App\Models\Topping;
+use App\Models\Order;
 use App\Http\Controllers\CartController;
 
 class FoodController extends Controller
@@ -54,8 +54,7 @@ class FoodController extends Controller
 
 
 
-    public static function getPrice($size)
-    {
+    public static function getPrice($size){
         switch ($size) {
             case "S":
                 return 5.00;
@@ -70,4 +69,40 @@ class FoodController extends Controller
                 break;
         }
     }
+
+    public function viewItemsInCart(){
+
+        $food=Food::where('UserID', auth()->id())->where('Status',"0")
+        ->leftjoin('noodle_types', 'noodle_types.id', '=', 'food.NoodleTypeID')
+        ->leftjoin('toppings', 'toppings.id', '=', 'food.ToppingID')
+        ->select(
+            'food.*',
+            'noodle_types.name as Noodle',
+            'food.*',
+            'toppings.name as ToppingName'
+        )->get();
+
+        $total=Food::where('UserID', auth()->id())->where('Status',"0")->sum('TotalPrice');
+
+      return view('viewCart')->with('food', $food)->with('total', $total);
+    }
+
+    public function checkout(){
+
+        $key=auth()->id();
+        
+
+        //add new order
+        $OID = Order::create([
+            'UserID' => $key
+        ])->id;
+
+    Food::where('UserID', auth()->id())->where('Status',"0")->update(['OrderID'=>$OID,'Status'=>"1"]);
+  
+
+    return redirect()->route('home');
+    }
+
+
+
 }
