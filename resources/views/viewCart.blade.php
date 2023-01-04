@@ -47,11 +47,11 @@
             </h1>
 
           
-        
+        @if ($total!=0)
        <a class="btn btn-danger" href='{{ route("checkout") }}'>
         {{ __('Checkout') }}
-    </a>
-       
+        </a>
+       @endif
        
         </div>
     </div>
