@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/test', function () {
@@ -72,7 +72,8 @@ Route::get('/viewCart',[App\Http\Controllers\FoodController::class, 'viewItemsIn
 Route::get('/checkout',[App\Http\Controllers\FoodController::class, 'checkout'])->name('checkout');
 
 
-
+//Order
+Route::get('/viewOrders',[App\Http\Controllers\OrderController::class, 'CustomerViewOrders'])->name('viewOrders');
 
 
 

@@ -8,21 +8,18 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  
+
 
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS --> 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <script src="{{ asset('js/app.js') }}" defer></script>
 
 
-
-
- 
 
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <title>The Noodle Stop</title>
@@ -34,7 +31,7 @@
 
       <div class="container">
 
-        <a href="#" class="navbar-brand">The Noodle Stop </a>
+        <a href="{{ route('home') }}" class="navbar-brand">The Noodle Stop </a>
 
 
 
@@ -53,10 +50,19 @@
           @endif
           @else
           <li class="nav-item">
-            <a type="button" class="btn btn-success" href="{{route('viewCart')}}">
+            <a type="button" class="btn btn-danger" href="{{route('viewCart')}}">
               My Cart <span class="badge bg-danger"></span>
-</a>
+            </a>
+
+            <a type="button" class="btn btn-success" href="{{route('viewOrders')}}">
+              My Orders <span class="badge bg-danger"></span>
+            </a>
+
           </li>
+
+
+
+
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }}

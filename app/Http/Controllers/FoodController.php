@@ -17,7 +17,7 @@ class FoodController extends Controller
     public function add()
     {
         $r = request();
-        $price=$this::getPrice($r->foodSize);
+        $price = $this::getPrice($r->foodSize);
 
 
         $addProduct = Food::create([
@@ -25,36 +25,35 @@ class FoodController extends Controller
             'quantity' => $r->foodQuantity,
             'unitPrice' => $price,
             'totalPrice' => $price * ($r->foodQuantity),
-            'OrderID'=>"-1",
-            'Status'=>"0",
-            'UserID'=>auth()->id(),
+            'OrderID' => "-1",
+            'Status' => "0",
+            'UserID' => auth()->id(),
             'ToppingID' => $r->ToppingID,
             'NoodleTypeID' => $r->NoodleTypeID,
-            
-        
+
+
 
         ]);
 
-           
 
-        Session::flash('success', "Product created successfully!");
+
+
 
         return redirect()->route('home');
     }
 
 
-    public function edit(){
+    public function edit()
+    { }
 
-    }
-
-   public function delete(){
-    
-   }
+    public function delete()
+    { }
 
 
 
 
-    public static function getPrice($size){
+    public static function getPrice($size)
+    {
         switch ($size) {
             case "S":
                 return 5.00;
@@ -70,39 +69,39 @@ class FoodController extends Controller
         }
     }
 
-    public function viewItemsInCart(){
+    public function viewItemsInCart()
+    {
 
-        $food=Food::where('UserID', auth()->id())->where('Status',"0")
-        ->leftjoin('noodle_types', 'noodle_types.id', '=', 'food.NoodleTypeID')
-        ->leftjoin('toppings', 'toppings.id', '=', 'food.ToppingID')
-        ->select(
-            'food.*',
-            'noodle_types.name as Noodle',
-            'food.*',
-            'toppings.name as ToppingName'
-        )->get();
+        $food = Food::where('UserID', auth()->id())->where('Status', "0")
+            ->leftjoin('noodle_types', 'noodle_types.id', '=', 'food.NoodleTypeID')
+            ->leftjoin('toppings', 'toppings.id', '=', 'food.ToppingID')
+            ->select(
+                'food.*',
+                'noodle_types.name as Noodle',
+                'food.*',
+                'toppings.name as ToppingName'
+            )->get();
 
-        $total=Food::where('UserID', auth()->id())->where('Status',"0")->sum('TotalPrice');
+        $total = Food::where('UserID', auth()->id())->where('Status', "0")->sum('TotalPrice');
 
-      return view('viewCart')->with('food', $food)->with('total', $total);
+        return view('viewCart')->with('food', $food)->with('total', $total);
     }
 
-    public function checkout(){
+    public function checkout()
+    {
 
-        $key=auth()->id();
-        
+        $key = auth()->id();
+
 
         //add new order
         $OID = Order::create([
-            'UserID' => $key
+            'UserID' => $key,
+            'status'=>"In Progress"
         ])->id;
 
-    Food::where('UserID', auth()->id())->where('Status',"0")->update(['OrderID'=>$OID,'Status'=>"1"]);
-  
+        Food::where('UserID', auth()->id())->where('Status', "0")->update(['OrderID' => $OID, 'Status' => "1"]);
 
-    return redirect()->route('home');
+
+        return redirect()->route('home');
     }
-
-
-
 }

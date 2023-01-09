@@ -13,7 +13,7 @@ class OrderController extends Controller
     //
 public function CustomerViewOrders(){
     $order=Order::where('UserID',auth()->id())->get();
-    return view('viewOrder')->with('orders',$order);
+    return view('viewOrders')->with('orders',$order);
 }
 
 public function CustomerViewOrderDetail(){

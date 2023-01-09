@@ -19,8 +19,7 @@
 
             <tbody>
                 @foreach($food as $food)
-                  
-            
+
                 <tr>
 
                     <td>{{$food->ToppingName}}</td>
@@ -30,7 +29,9 @@
                     <td>{{$food->unitPrice}}</td>
                     <td>{{$food->totalPrice}}</td>
 
-                    <td></td>
+                    <td>
+
+                    </td>
                 </tr>
 
 
@@ -41,18 +42,18 @@
         </table>
         <div>
             <h1>Total: RM
-             
+
                 {{$total}}
-             
+
             </h1>
 
-          
-        @if ($total!=0)
-       <a class="btn btn-danger" href='{{ route("checkout") }}'>
-        {{ __('Checkout') }}
-        </a>
-       @endif
-       
+
+            @if ($total!=0)
+            <a class="btn btn-danger" href='{{ route("checkout") }}'>
+                {{ __('Checkout') }}
+            </a>
+            @endif
+
         </div>
     </div>
     <div class="col-sm-3">

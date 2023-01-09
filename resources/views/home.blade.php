@@ -2,26 +2,27 @@
 
 @section('content')
 <div class="container">
+
     <div class="row justify-content-center">
+
         <div class="col-md-8">
+
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+
+
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <img src="{{ asset('images/bowls.png') }}", width="700", height="300">
+                    <img src="{{ asset('images/noodle.png') }}", width="700", height="300">
 
-                    {{ __('You are logged in!') }}
-
-
-
-                    
+                    <img src="{{ asset('images/dish.png') }}", width="700", height="300">
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 @endsection

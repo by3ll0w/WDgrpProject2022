@@ -28,8 +28,8 @@
         </table>
 
         <a class="btn btn-danger" href='{{ route("addTopping") }}'>
-        {{ __('Add New') }}
-    </a><br>
+            {{ __('Add New') }}
+        </a><br>
     </div>
 
     <div class="col-sm-3"></div>
