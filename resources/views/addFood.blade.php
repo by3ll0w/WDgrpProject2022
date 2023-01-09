@@ -4,7 +4,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <br><br>
-        <h3>Add New Product</h3>
+        <h3>Add new Noodle</h3>
 
 
         <form action="{{route('newItem')}}" method="POST" enctype="multipart/form-data">

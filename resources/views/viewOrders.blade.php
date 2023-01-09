@@ -20,8 +20,8 @@
                 @foreach($orders as $order)
                 <tr>
                     <td>{{$order->id}}</td>
-                    <td>{{$order->date}}</td>
-                    <td></td>
+                    <td>{{$order->created_at}}</td>
+                    <td>{{$order->status}}</td>
                     <td></td>
                 </tr>
                 @endforeach
