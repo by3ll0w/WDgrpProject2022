@@ -75,7 +75,7 @@ Route::get('/checkout',[App\Http\Controllers\FoodController::class, 'checkout'])
 //Order
 Route::get('/viewOrders',[App\Http\Controllers\OrderController::class, 'CustomerViewOrders'])->name('viewOrders');
 
-
+Route::get('/showOrders',[App\Http\Controllers\OrderController::class, 'StaffViewOrders'])->name('showOrder');
 
 
 Auth::routes();

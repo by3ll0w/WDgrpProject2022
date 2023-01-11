@@ -49,7 +49,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="">{{ __('View Orders') }}</a>
+            <a class="nav-link" href="{{ route('showOrder') }}">{{ __('View Orders') }}</a>
           </li>
 
         </ul>

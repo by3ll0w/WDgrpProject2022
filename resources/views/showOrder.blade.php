@@ -1,4 +1,4 @@
-@extends('layouts/customerlayout')
+@extends('layouts/stafflayout')
 @section('content')
 <div class="row">
     <div class="col-sm-3"></div>
