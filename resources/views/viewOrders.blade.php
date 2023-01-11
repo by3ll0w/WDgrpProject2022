@@ -20,6 +20,7 @@
                 @foreach($orders as $order)
                 <tr>
                     <td>{{$order->id}}</td>
+
                     <td>
                         @foreach($items as $item)
                       @if($item->OrderID==$order->id)
@@ -31,8 +32,11 @@
                         
                         @endforeach
                     </td>
+
                     <td>{{$order->status}}</td>
+
                     <td></td>
+                    
                 </tr>
                 @endforeach
             </tbody>
