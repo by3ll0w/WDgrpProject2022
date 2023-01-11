@@ -15,10 +15,19 @@ class OrderController extends Controller
     //
     public function CustomerViewOrders()
     {
-        $order = Order::where('UserID', auth()->id())->get();
+        $orders = Order::where('UserID', auth()->id())->get();
+        $items = Food::leftjoin('noodle_types', 'noodle_types.id', '=', 'food.NoodleTypeID')
+                ->leftjoin('toppings', 'toppings.id', '=', 'food.ToppingID')
+                ->select(
+                    'food.*',
+                    'noodle_types.name as Noodle',
+                    'food.*',
+                    'toppings.name as ToppingName'
+                )->get();
 
 
-        return view('viewOrders')->with('orders', $order);
+
+        return view('viewOrders',compact('orders','items'));
     }
 
 
@@ -31,10 +40,4 @@ class OrderController extends Controller
     }
     public function StaffViewOrderDetail()
     { }
-
-
-
-    public function GetItemList(){
-
-    }
 }

@@ -21,9 +21,15 @@
                 <tr>
                     <td>{{$order->id}}</td>
                     <td>
+                        @foreach($items as $item)
+                      @if($item->OrderID==$order->id)
+                    
+                        {{$item->quantity}} x {{$item->ToppingName}} {{$item->Noodle}} ({{$item->size}})
 
-
-
+                        <br>
+                     @endif
+                        
+                        @endforeach
                     </td>
                     <td>{{$order->status}}</td>
                     <td></td>
