@@ -35,7 +35,10 @@
 
                     <td>{{$order->status}}</td>
 
-                    <td></td>
+                    <td>
+
+                    
+                    </td>
                     
                 </tr>
                 @endforeach

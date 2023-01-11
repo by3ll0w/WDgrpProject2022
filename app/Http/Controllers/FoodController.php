@@ -43,7 +43,12 @@ class FoodController extends Controller
     }
 
 
-    public function edit()
+    public function edit($id)
+    {
+        $food = Food::find($id);
+        return view('editFood', compact('food'));
+    }
+    public function update()
     { }
 
     public function delete()
@@ -96,7 +101,7 @@ class FoodController extends Controller
         //add new order
         $OID = Order::create([
             'UserID' => $key,
-            'status'=>"In Progress"
+            'status' => "In Progress"
         ])->id;
 
         Food::where('UserID', auth()->id())->where('Status', "0")->update(['OrderID' => $OID, 'Status' => "1"]);

@@ -35,9 +35,9 @@ Route::get('/addTopping', function () {
     return view('addTopping');
 });
 
-Route::post('/addTopping',[App\Http\Controllers\ToppingController::class, 'add'])->name('addTopping');
+Route::post('/addTopping', [App\Http\Controllers\ToppingController::class, 'add'])->name('addTopping');
 
-Route::get('/viewTopping',[App\Http\Controllers\ToppingController::class, 'view'])->name('viewTopping');
+Route::get('/viewTopping', [App\Http\Controllers\ToppingController::class, 'view'])->name('viewTopping');
 
 
 
@@ -46,16 +46,20 @@ Route::get('/addNoodleType', function () {
     return view('addNoodleType');
 });
 
-Route::post('/addNoodleType',[App\Http\Controllers\NoodleTypeController::class, 'add'])->name('addNoodleType');
+Route::post('/addNoodleType', [App\Http\Controllers\NoodleTypeController::class, 'add'])->name('addNoodleType');
 
-Route::get('/viewNoodleType',[App\Http\Controllers\NoodleTypeController::class, 'view'])->name('viewNoodleType');
+Route::get('/viewNoodleType', [App\Http\Controllers\NoodleTypeController::class, 'view'])->name('viewNoodleType');
 
 
 //Food
 Route::get('/newItem', function () {
-    return view('addFood',['ToppingID'=> App\Models\Topping::all(),'NoodleTypeID'=> App\Models\NoodleType::all()]);
+    return view('addFood', ['ToppingID' => App\Models\Topping::all(), 'NoodleTypeID' => App\Models\NoodleType::all()]);
 });
-Route::post('/newItem',[App\Http\Controllers\FoodController::class, 'add'])->name('newItem');
+Route::post('/newItem', [App\Http\Controllers\FoodController::class, 'add'])->name('newItem');
+
+
+Route::get('/editFood/{id}', [FoodController::class, 'edit'])->name('editFood');
+Route::put('/updateFood/{id}', [FoodController::class, 'update'])->name('updateFood');
 
 
 
@@ -64,18 +68,18 @@ Route::post('/newItem',[App\Http\Controllers\FoodController::class, 'add'])->nam
 //Cart
 //Route::get('/testCart',[App\Http\Controllers\CartController::class, 'getCart'])->name('testCart');
 
-Route::get('/viewCart',[App\Http\Controllers\FoodController::class, 'viewItemsInCart'])->name('viewCart');
+Route::get('/viewCart', [App\Http\Controllers\FoodController::class, 'viewItemsInCart'])->name('viewCart');
 
 
 
 //
-Route::get('/checkout',[App\Http\Controllers\FoodController::class, 'checkout'])->name('checkout');
+Route::get('/checkout', [App\Http\Controllers\FoodController::class, 'checkout'])->name('checkout');
 
 
 //Order
-Route::get('/viewOrders',[App\Http\Controllers\OrderController::class, 'CustomerViewOrders'])->name('viewOrders');
+Route::get('/viewOrders', [App\Http\Controllers\OrderController::class, 'CustomerViewOrders'])->name('viewOrders');
 
-Route::get('/showOrders',[App\Http\Controllers\OrderController::class, 'StaffViewOrders'])->name('showOrder');
+Route::get('/showOrders', [App\Http\Controllers\OrderController::class, 'StaffViewOrders'])->name('showOrder');
 
 
 Auth::routes();
