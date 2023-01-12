@@ -30,7 +30,7 @@
                     <td>{{$food->totalPrice}}</td>
 
                     <td>
-                    <a href="{{ route('editFood') }}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{{ route('editFood',$food->id) }}" class="btn btn-primary btn-sm">{{__('Edit')}}</a>
                     </td>
                 </tr>
 

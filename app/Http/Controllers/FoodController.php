@@ -46,7 +46,9 @@ class FoodController extends Controller
     public function edit($id)
     {
         $food = Food::find($id);
-        return view('editFood', compact('food'));
+        $ToppingID=Topping::all();
+        $NoodleTypeID=NoodleType::all();
+        return view('editFood', compact('food','ToppingID','NoodleTypeID'));
     }
     public function update()
     { }
