@@ -4,21 +4,25 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <br><br>
-        <h3>Add new Noodle</h3>
+        <h3>Edit Noodle</h3>
 
 
-        <form action="{{route('newItem')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('updateFood',$food->id)}}" method="POST" enctype="multipart/form-data">
             @CSRF
 
             <div class="form-group">
                 <label for="addFood">Add to Order</label>
                 <br>
                 <label for="foodSize">Size</label><br>
-                <input type="radio" id="S" name="foodSize" value="S" checked="checked">
+                <input type="radio" id="S" name="foodSize" value="S" {{$food->size=="S"? "checked":""}}>
                 <label for="S">S (RM 5.00)</label><br>
-                <input type="radio" id="M" name="foodSize" value="M">
+
+
+                <input type="radio" id="M" name="foodSize" value="M" {{$food->size=="M"? "checked":""}}>
                 <label for="M">M (RM 7.50)</label><br>
-                <input type="radio" id="L" name="foodSize" value="L">
+
+
+                <input type="radio" id="L" name="foodSize" value="L" {{$food->size=="L"? "checked":""}}>
                 <label for="L">L (RM 9.00)</label><br>
 
             </div>
@@ -26,7 +30,7 @@
 
             <div class="form-group">
                 <label for="foodQuantity">Quantity</label>
-                <input class="form-control" type="number" id="foodQuantity" name="foodQuantity" min="0" required>
+                <input class="form-control" type="number" id="foodQuantity" name="foodQuantity" min="0" value={{$food->quantity}} required>
             </div>
 
 
@@ -35,7 +39,10 @@
                 <label for="Topping">Topping</label>
                 <select name="ToppingID" id="ToppingID" class="form-control">
                     @foreach($ToppingID as $topping)
-                    <option value="{{$topping->id}}">{{$topping->name}}</option>
+                    <option value="{{$topping->id}}"    
+                    {{$food->ToppingID==$topping->id ? 'selected="selected"' : '' }}
+                    
+                    >{{$topping->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -44,7 +51,10 @@
                 <label for="NoodleType">Noodle Type</label>
                 <select name="NoodleTypeID" id="NoodleTypeID" class="form-control">
                     @foreach($NoodleTypeID as $noodle_type)
-                    <option value="{{$noodle_type->id}}">{{$noodle_type->name}}</option>
+                    <option value="{{$noodle_type->id}}"
+                    {{$food->NoodleTypeID==$noodle_type->id ? 'selected="selected"' : '' }}
+                    
+                    >{{$noodle_type->name}}</option>
                     @endforeach
                 </select>
             </div>

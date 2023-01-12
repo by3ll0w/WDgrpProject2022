@@ -91,4 +91,4 @@
 
   @yield('content')
 </body>
-</ht
+</html>
