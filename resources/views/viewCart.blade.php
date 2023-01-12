@@ -31,6 +31,7 @@
 
                     <td>
                     <a href="{{ route('userEditFood',$food->id) }}" class="btn btn-primary btn-sm">{{__('Edit')}}</a>
+                    <a href="{{ route('deleteFood',$food->id) }}" class="btn btn-primary btn-sm">{{__('Remove')}}</a>
                     </td>
                 </tr>
 

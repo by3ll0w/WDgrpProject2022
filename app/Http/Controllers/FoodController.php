@@ -63,8 +63,11 @@ class FoodController extends Controller
     return redirect()->route('viewCart');
     }
 
-    public function userDelete()
-    { }
+    public function delete($id)
+    {
+        Food::find($id)->delete();
+        return redirect()->back();
+    }
 
 
 
