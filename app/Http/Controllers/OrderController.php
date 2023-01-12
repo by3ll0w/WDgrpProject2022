@@ -16,6 +16,7 @@ class OrderController extends Controller
     public function CustomerViewOrders()
     {
         $orders = Order::where('UserID', auth()->id())->get();
+
         $items = Food::leftjoin('noodle_types', 'noodle_types.id', '=', 'food.NoodleTypeID')
             ->leftjoin('toppings', 'toppings.id', '=', 'food.ToppingID')
             ->select(
@@ -25,9 +26,13 @@ class OrderController extends Controller
                 'toppings.name as ToppingName'
             )->get();
 
+        $total = array();
+        foreach ($orders as $order) {
+            $total[$order->id] = Food::where('OrderID', $order->id)->sum('TotalPrice');
+        }
 
 
-        return view('viewOrders', compact('orders', 'items'));
+        return view('viewOrders', compact('orders', 'items', 'total'));
     }
 
 
@@ -48,9 +53,12 @@ class OrderController extends Controller
                 'toppings.name as ToppingName'
             )->get();
 
+            $total = array();
+            foreach ($orders as $order) {
+                $total[$order->id] = Food::where('OrderID', $order->id)->sum('TotalPrice');
+            }
 
-
-        return view('showOrder', compact('orders', 'items', 'users'));
+        return view('showOrder', compact('orders', 'items', 'users','total'));
     }
     public function StaffViewOrderDetail()
     { }

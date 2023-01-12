@@ -11,6 +11,7 @@
                 <tr>
                     <td>ID</td>
                     <td>Items</td>
+                    <td>Total</td>
                     <td>Status</td>
                     <td>Action</td>
                 </tr>
@@ -23,23 +24,27 @@
 
                     <td>
                         @foreach($items as $item)
-                      @if($item->OrderID==$order->id)
-                    
-                        {{$item->quantity}} x {{$item->ToppingName}} {{$item->Noodle}} ({{$item->size}})
+                        @if($item->OrderID==$order->id)
+
+                        {{$item->quantity}} x {{$item->ToppingName}} {{$item->Noodle}} ({{$item->size}}) - RM{{$item->totalPrice}}
 
                         <br>
-                     @endif
-                        
+                        @endif
+
                         @endforeach
+                    </td>
+
+                    <td>
+                        {{$total[$order->id]}}
                     </td>
 
                     <td>{{$order->status}}</td>
 
                     <td>
 
-                    
+
                     </td>
-                    
+
                 </tr>
                 @endforeach
             </tbody>
