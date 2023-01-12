@@ -7,8 +7,9 @@
         <h3>Edit Noodle</h3>
 
 
-        <form action="{{route('updateFood',$food->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('userUpdateFood',$food->id)}}" method="POSt" enctype="multipart/form-data">
             @CSRF
+            @method('PUT')
 
             <div class="form-group">
                 <label for="addFood">Add to Order</label>
@@ -39,10 +40,7 @@
                 <label for="Topping">Topping</label>
                 <select name="ToppingID" id="ToppingID" class="form-control">
                     @foreach($ToppingID as $topping)
-                    <option value="{{$topping->id}}"    
-                    {{$food->ToppingID==$topping->id ? 'selected="selected"' : '' }}
-                    
-                    >{{$topping->name}}</option>
+                    <option value="{{$topping->id}}" {{$food->ToppingID==$topping->id ? 'selected="selected"' : '' }}>{{$topping->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -51,15 +49,12 @@
                 <label for="NoodleType">Noodle Type</label>
                 <select name="NoodleTypeID" id="NoodleTypeID" class="form-control">
                     @foreach($NoodleTypeID as $noodle_type)
-                    <option value="{{$noodle_type->id}}"
-                    {{$food->NoodleTypeID==$noodle_type->id ? 'selected="selected"' : '' }}
-                    
-                    >{{$noodle_type->name}}</option>
+                    <option value="{{$noodle_type->id}}" {{$food->NoodleTypeID==$noodle_type->id ? 'selected="selected"' : '' }}>{{$noodle_type->name}}</option>
                     @endforeach
                 </select>
             </div>
-
-            <button type="submit" class="btn btn-primary">Order</button>
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
 
 

@@ -58,8 +58,8 @@ Route::get('/newItem', function () {
 Route::post('/newItem', [App\Http\Controllers\FoodController::class, 'add'])->name('newItem');
 
 
-Route::get('/editFood/{id}', [App\Http\Controllers\FoodController::class, 'edit'])->name('editFood');
-Route::put('/updateFood/{id}', [App\Http\Controllers\FoodController::class, 'update'])->name('updateFood');
+Route::get('/userEditFood/{id}', [App\Http\Controllers\FoodController::class, 'userEdit'])->name('userEditFood');
+Route::put('/userUpdateFood/{id}', [App\Http\Controllers\FoodController::class, 'userUpdate'])->name('userUpdateFood');
 
 
 
