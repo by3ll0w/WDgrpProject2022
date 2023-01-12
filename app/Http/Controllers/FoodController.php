@@ -30,9 +30,6 @@ class FoodController extends Controller
             'UserID' => auth()->id(),
             'ToppingID' => $r->ToppingID,
             'NoodleTypeID' => $r->NoodleTypeID,
-
-
-
         ]);
 
 
@@ -43,17 +40,30 @@ class FoodController extends Controller
     }
 
 
-    public function edit($id)
+    public function userEdit($id)
     {
         $food = Food::find($id);
         $ToppingID=Topping::all();
         $NoodleTypeID=NoodleType::all();
-        return view('editFood', compact('food','ToppingID','NoodleTypeID'));
+        return view('UserEditFood', compact('food','ToppingID','NoodleTypeID'));
     }
-    public function update()
-    { }
+    public function userUpdate($id)
+    { 
+        $r=request();
+        $price = $this::getPrice($r->foodSize);
+        
+    Food::where('id',$id)->update([
+        'size' => $r->foodSize,
+        'quantity' => $r->foodQuantity,
+        'unitPrice' => $price,
+        'totalPrice' => $price * ($r->foodQuantity),
+        'ToppingID' => $r->ToppingID,
+        'NoodleTypeID' => $r->NoodleTypeID,
+    ]);
+    return redirect()->route('viewCart');
+    }
 
-    public function delete()
+    public function userDelete()
     { }
 
 
