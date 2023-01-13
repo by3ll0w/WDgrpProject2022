@@ -43,25 +43,37 @@ class FoodController extends Controller
     public function userEdit($id)
     {
         $food = Food::find($id);
-        $ToppingID=Topping::all();
-        $NoodleTypeID=NoodleType::all();
-        return view('UserEditFood', compact('food','ToppingID','NoodleTypeID'));
+        $ToppingID = Topping::all();
+        $NoodleTypeID = NoodleType::all();
+        return view('UserEditFood', compact('food', 'ToppingID', 'NoodleTypeID'));
     }
+
     public function userUpdate($id)
-    { 
-        $r=request();
+    {
+        $r = request();
         $price = $this::getPrice($r->foodSize);
-        
-    Food::where('id',$id)->update([
-        'size' => $r->foodSize,
-        'quantity' => $r->foodQuantity,
-        'unitPrice' => $price,
-        'totalPrice' => $price * ($r->foodQuantity),
-        'ToppingID' => $r->ToppingID,
-        'NoodleTypeID' => $r->NoodleTypeID,
-    ]);
-    return redirect()->route('viewCart');
+
+        Food::where('id', $id)->update([
+            'size' => $r->foodSize,
+            'quantity' => $r->foodQuantity,
+            'unitPrice' => $price,
+            'totalPrice' => $price * ($r->foodQuantity),
+            'ToppingID' => $r->ToppingID,
+            'NoodleTypeID' => $r->NoodleTypeID,
+        ]);
+        return redirect()->route('viewCart');
     }
+
+
+    public function staffEdit($id)
+    {
+        $food = Food::find($id);
+        $ToppingID = Topping::all();
+        $NoodleTypeID = NoodleType::all();
+        return view('StaffEditFood', compact('food', 'ToppingID', 'NoodleTypeID'));
+    }
+
+
 
     public function delete($id)
     {

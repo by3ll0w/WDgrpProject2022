@@ -61,6 +61,10 @@ Route::post('/newItem', [App\Http\Controllers\FoodController::class, 'add'])->na
 Route::get('/userEditFood/{id}', [App\Http\Controllers\FoodController::class, 'userEdit'])->name('userEditFood');
 Route::put('/userUpdateFood/{id}', [App\Http\Controllers\FoodController::class, 'userUpdate'])->name('userUpdateFood');
 
+
+Route::get('/staffEditFood/{id}', [App\Http\Controllers\FoodController::class, 'staffEdit'])->name('staffEditFood');
+Route::put('/staffUpdateFood/{id}', [App\Http\Controllers\FoodController::class, 'staffUpdate'])->name('staffUpdateFood');
+
 Route::get('/deleteFood/{id}', [App\Http\Controllers\FoodController::class, 'delete'])->name('deleteFood');
 
 
