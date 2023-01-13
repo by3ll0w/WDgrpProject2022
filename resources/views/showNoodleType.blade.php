@@ -3,8 +3,9 @@
 <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
-        
-        <br><h1>Noodle Types</h1><br>
+
+        <br>
+        <h1>Noodle Types</h1><br>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -19,7 +20,10 @@
                 <tr>
                     <td>{{$noodletype->id}}</td>
                     <td>{{$noodletype->name}}</td>
-                    <td></td>
+                    <td>
+                        <a href="{{ route('editNoodleType',$noodletype->id) }}" class="btn btn-primary btn-sm">{{__('Edit')}}</a>
+                        <a href="{{ route('deleteNoodleType',$noodletype->id) }}" class="btn btn-primary btn-sm">{{__('Remove')}}</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -27,8 +31,8 @@
         </table>
 
         <a class="btn btn-danger" href='{{ route("addNoodleType") }}'>
-        {{ __('Add New') }}
-    </a><br>
+            {{ __('Add New') }}
+        </a><br>
     </div>
     <div class="col-sm-3"></div>
 
