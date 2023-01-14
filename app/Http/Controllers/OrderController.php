@@ -36,6 +36,12 @@ class OrderController extends Controller
     }
 
 
+    public function cancelOrder($id)
+    { }
+
+
+
+
 
 
     public function StaffViewOrders()
@@ -53,13 +59,21 @@ class OrderController extends Controller
                 'toppings.name as ToppingName'
             )->get();
 
-            $total = array();
-            foreach ($orders as $order) {
-                $total[$order->id] = Food::where('OrderID', $order->id)->sum('TotalPrice');
-            }
+        $total = array();
+        foreach ($orders as $order) {
+            $total[$order->id] = Food::where('OrderID', $order->id)->sum('TotalPrice');
+        }
 
-        return view('showOrder', compact('orders', 'items', 'users','total'));
+        return view('showOrder', compact('orders', 'items', 'users', 'total'));
     }
-    public function StaffViewOrderDetail()
+    public function StaffViewOrderDetail($id)
+    {
+        $order = Order::find($id);
+        $foods =Food::where('OrderID',$id)->get();
+
+    }
+
+
+    public function deleteOrder($id)
     { }
 }

@@ -9,7 +9,7 @@ use App\Models\Food;
 use App\Models\NoodleType;
 use App\Models\Topping;
 use App\Models\Order;
-use App\Http\Controllers\CartController;
+
 
 class FoodController extends Controller
 {
@@ -43,28 +43,43 @@ class FoodController extends Controller
     public function userEdit($id)
     {
         $food = Food::find($id);
-        $ToppingID=Topping::all();
-        $NoodleTypeID=NoodleType::all();
-        return view('UserEditFood', compact('food','ToppingID','NoodleTypeID'));
-    }
-    public function userUpdate($id)
-    { 
-        $r=request();
-        $price = $this::getPrice($r->foodSize);
-        
-    Food::where('id',$id)->update([
-        'size' => $r->foodSize,
-        'quantity' => $r->foodQuantity,
-        'unitPrice' => $price,
-        'totalPrice' => $price * ($r->foodQuantity),
-        'ToppingID' => $r->ToppingID,
-        'NoodleTypeID' => $r->NoodleTypeID,
-    ]);
-    return redirect()->route('viewCart');
+        $ToppingID = Topping::all();
+        $NoodleTypeID = NoodleType::all();
+        return view('UserEditFood', compact('food', 'ToppingID', 'NoodleTypeID'));
     }
 
-    public function userDelete()
-    { }
+    public function userUpdate($id)
+    {
+        $r = request();
+        $price = $this::getPrice($r->foodSize);
+
+        Food::where('id', $id)->update([
+            'size' => $r->foodSize,
+            'quantity' => $r->foodQuantity,
+            'unitPrice' => $price,
+            'totalPrice' => $price * ($r->foodQuantity),
+            'ToppingID' => $r->ToppingID,
+            'NoodleTypeID' => $r->NoodleTypeID,
+        ]);
+        return redirect()->route('viewCart');
+    }
+
+
+    public function staffEdit($id)
+    {
+        $food = Food::find($id);
+        $ToppingID = Topping::all();
+        $NoodleTypeID = NoodleType::all();
+        return view('StaffEditFood', compact('food', 'ToppingID', 'NoodleTypeID'));
+    }
+
+
+
+    public function delete($id)
+    {
+        Food::find($id)->delete();
+        return redirect()->back();
+    }
 
 
 

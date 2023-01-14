@@ -18,7 +18,6 @@ class Food extends Model
         'unitPrice',
         'quantity',
         'totalPrice'
-    
     ];
 
 

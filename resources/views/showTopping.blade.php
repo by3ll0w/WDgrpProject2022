@@ -20,7 +20,10 @@
                 <tr>
                     <td>{{$topping->id}}</td>
                     <td>{{$topping->name}}</td>
-                    <td></td>
+                    <td>
+                        <a href="{{ route('editTopping',$topping->id) }}" class="btn btn-primary btn-sm">{{__('Edit')}}</a>
+                        <a href="{{ route('deleteTopping',$topping->id) }}" class="btn btn-primary btn-sm">{{__('Remove')}}</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

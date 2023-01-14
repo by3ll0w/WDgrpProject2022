@@ -7,7 +7,7 @@
         <h3>Edit Noodle</h3>
 
 
-        <form action="{{route('userUpdateFood',$food->id)}}" method="POSt" enctype="multipart/form-data">
+        <form action="{{route('userUpdateFood',$food->id)}}" method="POST" enctype="multipart/form-data">
             @CSRF
             @method('PUT')
 
@@ -54,6 +54,7 @@
                 </select>
             </div>
             <br>
+            
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
 

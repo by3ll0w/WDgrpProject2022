@@ -39,6 +39,11 @@ Route::post('/addTopping', [App\Http\Controllers\ToppingController::class, 'add'
 
 Route::get('/viewTopping', [App\Http\Controllers\ToppingController::class, 'view'])->name('viewTopping');
 
+Route::get('/editTopping/{id}', [App\Http\Controllers\ToppingController::class, 'edit'])->name('editTopping');
+
+Route::put('/updateTopping/{id}', [App\Http\Controllers\ToppingController::class, 'update'])->name('updateTopping');
+
+Route::get('/deleteTopping/{id}', [App\Http\Controllers\ToppingController::class, 'delete'])->name('deleteTopping');
 
 
 //NoodleType
@@ -49,6 +54,12 @@ Route::get('/addNoodleType', function () {
 Route::post('/addNoodleType', [App\Http\Controllers\NoodleTypeController::class, 'add'])->name('addNoodleType');
 
 Route::get('/viewNoodleType', [App\Http\Controllers\NoodleTypeController::class, 'view'])->name('viewNoodleType');
+
+Route::get('/editNoodleType/{id}', [App\Http\Controllers\NoodleTypeController::class, 'edit'])->name('editNoodleType');
+
+Route::put('/updateNoodleType/{id}', [App\Http\Controllers\NoodleTypeController::class, 'update'])->name('updateNoodleType');
+
+Route::get('/deleteNoodleType/{id}', [App\Http\Controllers\NoodleTypeController::class, 'delete'])->name('deleteNoodleType');
 
 
 //Food
@@ -62,6 +73,10 @@ Route::get('/userEditFood/{id}', [App\Http\Controllers\FoodController::class, 'u
 Route::put('/userUpdateFood/{id}', [App\Http\Controllers\FoodController::class, 'userUpdate'])->name('userUpdateFood');
 
 
+Route::get('/staffEditFood/{id}', [App\Http\Controllers\FoodController::class, 'staffEdit'])->name('staffEditFood');
+Route::put('/staffUpdateFood/{id}', [App\Http\Controllers\FoodController::class, 'staffUpdate'])->name('staffUpdateFood');
+
+Route::get('/deleteFood/{id}', [App\Http\Controllers\FoodController::class, 'delete'])->name('deleteFood');
 
 
 
