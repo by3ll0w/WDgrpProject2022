@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\NoodleType;
+use App\Models\Food;
 
 class NoodleTypeController extends Controller
 {
@@ -35,5 +36,15 @@ class NoodleTypeController extends Controller
         $r = request();
         NoodleType::where('id', $id)->update(['name' => $r->noodleTypeName,]);
         return redirect()->route('viewNoodleType');
+    }
+
+    public function delete($id)
+    {
+        $noodleType = NoodleType::find($id);
+        Food::where('NoodleTypeID', $id)->delete();
+        $noodleType->delete();
+
+
+        return redirect()->back();
     }
 }

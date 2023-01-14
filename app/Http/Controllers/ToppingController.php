@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Topping;
+use App\Models\Food;
+
+
 
 class ToppingController extends Controller
 {
@@ -35,5 +38,18 @@ class ToppingController extends Controller
         Topping::where('id', $id)->update(['name' => $r->toppingName,]);
         return redirect()->route('viewTopping');
     }
+
+
+    public function delete($id)
+    {
+        $t = Topping::find($id);
+        Food::where('ToppingID', $id)->delete();
+        $t->delete();
+
+
+        return redirect()->back();
+    }
+
+    
 
 }

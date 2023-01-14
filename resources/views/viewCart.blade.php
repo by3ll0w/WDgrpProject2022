@@ -54,6 +54,9 @@
                 {{ __('Checkout') }}
             </a>
             @endif
+            <a class="btn btn-success" href='{{ route("newItem") }}'>
+                    {{ __('Add new Item') }}
+                </a>
 
         </div>
     </div>

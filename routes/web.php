@@ -22,9 +22,7 @@ Route::get('/test', function () {
 });
 
 
-Route::get('/staff', function () {
-    return view('staff');
-});
+
 
 
 
@@ -100,3 +98,7 @@ Route::get('/showOrders', [App\Http\Controllers\OrderController::class, 'StaffVi
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/staff', function () {
+    return view('staff');
+});

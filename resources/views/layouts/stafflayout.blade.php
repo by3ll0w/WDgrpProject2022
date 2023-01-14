@@ -8,21 +8,21 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  
+
 
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS --> 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <script src="{{ asset('js/app.js') }}" defer></script>
 
 
 
 
- 
+
 
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <title>The Noodle Stop</title>
@@ -39,11 +39,11 @@
 
 
         <ul class="nav navbar-nav navbar-right">
-      
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('viewTopping') }}">{{ __('Toppings') }}</a>
           </li>
-    
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('viewNoodleType') }}">{{ __('Noodle Types') }}</a>
           </li>
@@ -63,4 +63,5 @@
 
   @yield('content')
 </body>
+
 </html>
