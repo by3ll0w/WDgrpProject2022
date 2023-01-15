@@ -41,8 +41,12 @@
                     <td>{{$order->status}}</td>
 
                     <td>
-
-
+                        @if($order->status=="In Progress")
+                        <a class="btn btn-danger" href="{{ route('cancelOrder',$order->id) }}" class="btn btn-primary btn-sm">{{__('Cancel')}}</a>
+                        
+                        @else
+                        <a class="btn btn-danger" href="{{ route('deleteOrder',$order->id) }}" class="btn btn-primary btn-sm">{{__('Delete')}}</a>
+                        @endif
                     </td>
 
                 </tr>

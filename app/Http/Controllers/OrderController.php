@@ -37,9 +37,17 @@ class OrderController extends Controller
 
 
     public function cancelOrder($id)
-    { }
+    {
+        Order::find($id)->update(['status' => "Cancelled"]);
+        return redirect()->back();
+    }
 
-
+    public function delete($id)
+    {
+        Food::where('OrderID', $id)->delete();
+        Order::find($id)->delete();
+        return redirect()->back();
+    }
 
 
 
@@ -83,8 +91,4 @@ class OrderController extends Controller
 
         return view('staffViewOrderDetails', compact('order', 'food', 'total'));
     }
-
-
-    public function deleteOrder($id)
-    { }
 }

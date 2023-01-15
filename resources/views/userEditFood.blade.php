@@ -34,7 +34,14 @@
                 <input class="form-control" type="number" id="foodQuantity" name="foodQuantity" min="0" value={{$food->quantity}} required>
             </div>
 
-
+            <div class="form-group">
+                <label for="NoodleType">Noodle Type</label>
+                <select name="NoodleTypeID" id="NoodleTypeID" class="form-control">
+                    @foreach($NoodleTypeID as $noodle_type)
+                    <option value="{{$noodle_type->id}}" {{$food->NoodleTypeID==$noodle_type->id ? 'selected="selected"' : '' }}>{{$noodle_type->name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="Topping">Topping</label>
@@ -45,16 +52,9 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="NoodleType">Noodle Type</label>
-                <select name="NoodleTypeID" id="NoodleTypeID" class="form-control">
-                    @foreach($NoodleTypeID as $noodle_type)
-                    <option value="{{$noodle_type->id}}" {{$food->NoodleTypeID==$noodle_type->id ? 'selected="selected"' : '' }}>{{$noodle_type->name}}</option>
-                    @endforeach
-                </select>
-            </div>
+
             <br>
-            
+
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
 
