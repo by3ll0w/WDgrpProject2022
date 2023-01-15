@@ -51,6 +51,8 @@
                     <td>{{$order->status}}</td>
                     <td>
                     <a href="{{ route('staffViewOrderDetails',$order->id) }}" class="btn btn-primary btn-sm">{{__('Details')}}</a>
+                    <a href="{{ route('editOrderStatus',$order->id) }}" class="btn btn-primary btn-sm">{{__('Change Status')}}</a>
+                    <a class="btn btn-danger" href="{{ route('deleteOrder',$order->id) }}" class="btn btn-primary btn-sm">{{__('Delete')}}</a>
                     </td>
                 </tr>
                 @endforeach

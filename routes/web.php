@@ -96,6 +96,10 @@ Route::get('/showOrders', [App\Http\Controllers\OrderController::class, 'StaffVi
 
 Route::get('/staffViewOrderDetails/{id}', [App\Http\Controllers\OrderController::class, 'staffViewOrderDetail'])->name('staffViewOrderDetails');
 
+Route::get('/editOrderStatus/{id}', [App\Http\Controllers\OrderController::class, 'editOrderStatus'])->name('editOrderStatus');
+
+Route::put('/updateOrderStatus/{id}', [App\Http\Controllers\OrderController::class, 'updateOrderStatus'])->name('updateOrderStatus');
+
 Route::get('/cancelOrder/{id}', [App\Http\Controllers\OrderController::class, 'cancelOrder'])->name('cancelOrder');
 
 Route::get('/deleteOrder/{id}', [App\Http\Controllers\OrderController::class, 'delete'])->name('deleteOrder');

@@ -91,4 +91,17 @@ class OrderController extends Controller
 
         return view('staffViewOrderDetails', compact('order', 'food', 'total'));
     }
+
+    public function editOrderStatus($id)
+    {$order=Order::find($id);
+    return view('editOrderStatus',compact('order'));
+    
+    
+    }
+    public function updateOrderStatus($id)
+    { 
+        $r=request();
+        Order::find($id)->update(['status'=>$r->status]);
+       return $this->StaffViewOrders();
+    }
 }
