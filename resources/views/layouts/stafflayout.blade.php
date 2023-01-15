@@ -34,7 +34,7 @@
 
       <div class="container">
 
-        <a href="#" class="navbar-brand">The Noodle Stop </a>
+        <a href="{{route('staff')}}" class="navbar-brand">The Noodle Stop </a>
 
 
 

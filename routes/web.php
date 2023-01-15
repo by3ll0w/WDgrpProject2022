@@ -99,6 +99,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/staff', function () {
-    return view('staff');
-});
+Route::get('/staff', [App\Http\Controllers\Controller::class, 'staff'])->name('staff');
