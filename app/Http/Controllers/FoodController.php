@@ -73,7 +73,21 @@ class FoodController extends Controller
         return view('StaffEditFood', compact('food', 'ToppingID', 'NoodleTypeID'));
     }
 
+    public function staffUpdate($id)
+    {
+        $r = request();
+        $price = $this::getPrice($r->foodSize);
 
+        Food::where('id', $id)->update([
+            'size' => $r->foodSize,
+            'quantity' => $r->foodQuantity,
+            'unitPrice' => $price,
+            'totalPrice' => $price * ($r->foodQuantity),
+            'ToppingID' => $r->ToppingID,
+            'NoodleTypeID' => $r->NoodleTypeID,
+        ]);
+        return redirect()->route('staffViewOrderDetails',$id);
+    }
 
     public function delete($id)
     {

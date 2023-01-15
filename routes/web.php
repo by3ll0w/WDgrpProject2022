@@ -94,6 +94,11 @@ Route::get('/viewOrders', [App\Http\Controllers\OrderController::class, 'Custome
 
 Route::get('/showOrders', [App\Http\Controllers\OrderController::class, 'StaffViewOrders'])->name('showOrder');
 
+Route::get('/staffViewOrderDetails/{id}', [App\Http\Controllers\OrderController::class, 'staffViewOrderDetail'])->name('staffViewOrderDetails');
+
+
+
+
 
 Auth::routes();
 

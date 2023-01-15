@@ -49,7 +49,9 @@
                     </td>
 
                     <td>{{$order->status}}</td>
-                    <td></td>
+                    <td>
+                    <a href="{{ route('staffViewOrderDetails',$order->id) }}" class="btn btn-primary btn-sm">{{__('Details')}}</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

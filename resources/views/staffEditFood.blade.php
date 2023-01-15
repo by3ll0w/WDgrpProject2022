@@ -1,4 +1,4 @@
-@extends('layouts/customerlayout')
+@extends('layouts/stafflayout')
 @section('content')
 <div class="row">
     <div class="col-sm-3"></div>
@@ -7,7 +7,7 @@
         <h3>Edit Noodle</h3>
 
 
-        <form action="{{route('userUpdateFood',$food->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('staffUpdateFood',$food->id)}}" method="POST" enctype="multipart/form-data">
             @CSRF
             @method('PUT')
 

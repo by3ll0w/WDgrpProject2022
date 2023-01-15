@@ -66,11 +66,22 @@ class OrderController extends Controller
 
         return view('showOrder', compact('orders', 'items', 'users', 'total'));
     }
+
     public function StaffViewOrderDetail($id)
     {
         $order = Order::find($id);
-        $foods =Food::where('OrderID',$id)->get();
+        $food = Food::where('OrderID', $id)->leftjoin('noodle_types', 'noodle_types.id', '=', 'food.NoodleTypeID')
+            ->leftjoin('toppings', 'toppings.id', '=', 'food.ToppingID')
+            ->select(
+                'food.*',
+                'noodle_types.name as Noodle',
+                'food.*',
+                'toppings.name as ToppingName'
+            )->get();
 
+        $total = Food::where('OrderID', $id)->sum('TotalPrice');
+
+        return view('staffViewOrderDetails', compact('order', 'food', 'total'));
     }
 
 
