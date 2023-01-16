@@ -4,7 +4,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <br><br>
-        <h3>Rename Noodle Type</h3>
+        <h3>Change Order Status</h3>
 
 
         <form action="{{route('updateOrderStatus',$order->id)}}" method="POST" enctype="multipart/form-data">
@@ -25,7 +25,7 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Rename</button>
+            <button type="submit" class="btn btn-primary">Change</button>
 
         </form>
 
